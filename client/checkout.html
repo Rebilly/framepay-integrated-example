@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://framepay.rebilly.com/rebilly.css" rel="stylesheet" />
+    <script src="https://framepay.rebilly.com/rebilly.js"></script>
+    <link href="./style.css" rel="stylesheet" />
+    <title>FramePay Example</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="product">
+        <div class="product-summary">
+          <img class="product-image" src="https://picsum.photos/200">
+          <div class="product-title">
+            <div class="product-name">
+              Amazing product name
+            </div>
+            <div class="product-description">
+              Amazing product description
+            </div>
+          </div>
+        </div>
+        <p class="product-total">$100.00</p>
+      </div>
+      <div class="form">
+        <div class="message"></div>
+        <form>
+          <fieldset>
+            <div class="field">
+              <input required data-rebilly="firstName" placeholder="First Name" />
+            </div>
+            <div class="field">
+              <input required data-rebilly="lastName" placeholder="Last Name" />
+            </div>
+            <div class="field">
+              <div id="mounting-point">
+              </div>
+            </div>
+          </fieldset>
+          <button>Make Payment</button>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
