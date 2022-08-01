@@ -7,7 +7,7 @@ Rebilly.initialize({
   style: {
     base: {
       fontSize: "16px",
-      boxSahdow: "none",
+      boxShadow: "none",
     },
   },
 });
