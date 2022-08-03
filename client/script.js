@@ -1,6 +1,6 @@
 Rebilly.initialize({
   // Use your own publishable key:
-  publishableKey: "pk_sandbox_7FB1AJwXpG7qOrQukcKcBV_jBJ5622bGmTlknWH",
+  publishableKey: "pk_publishableKey",
   icon: {
     color: "#2c3e50",
   },
