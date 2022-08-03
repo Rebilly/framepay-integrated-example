@@ -20,7 +20,7 @@ Rebilly.on("ready", function () {
   Rebilly.card.mount("#mounting-point");
 });
 
-form.onsubmit = async function (e) {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   e.stopPropagation();
 
@@ -58,5 +58,5 @@ form.onsubmit = async function (e) {
     errorMessageBox.classList.remove("hidden");
   } finally {
     btnSubmit.disabled = false;
-  }
-};
+  }  
+});
