@@ -36,7 +36,7 @@ form.onsubmit = async function (e) {
       amount: 100,      
     }
 
-    const transactionResponse = await fetch("/create-transaction", {
+    const response = await fetch("/create-transaction", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,10 +44,9 @@ form.onsubmit = async function (e) {
       body: JSON.stringify(purchase),
     });
 
-    const transactionData = await transactionResponse.json();
-
-    const approvalUrl = transactionData._links.find(({rel}) => rel === "approvalUrl");
-
+    const transaction = await response.json();
+    const approvalUrl = transaction?._links.find(({rel}) => rel === "approvalUrl");
+    
     if (approvalUrl) {
       window.location = approvalUrl.href;
     } else {
