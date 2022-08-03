@@ -1,12 +1,18 @@
-html {
-  height: 100%;
-  font: 16px Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+/* Variables */
+:root {
+  --color-primary: #0044D4;
+  --color-text: #2c3e50;
+  --color-border: #ccc;
+  --color-danger: #e74c3c;
 }
+* {
+  box-sizing: border-box;
+}
+
 body {
+  color: var(--color-text);
+  font: 16px -apple-system, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
@@ -16,79 +22,40 @@ body {
   max-width: 500px;
   width: 100%;
   background-color: #fff;
-  box-sizing: border-box;
-  padding: 20px;
+  padding: 30px 20px;
   margin: 40px auto;
-  border-radius: 10px;
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
 }
 
-/* ===================================
-Product
-=================================== */
+/* Product information */
 .product {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.product-summary {
-  display: flex;
-  align-items: center;
-}
-.product-title {
-  text-align: left;
+  margin-bottom: 20px;
 }
 .product-name {
   font-weight: 600;
-}
-.product-description {
-  opacity: 0.6;
-}
-.product-image {
-  margin-right: 18px;
-  width: 50px;
-  height: 50px;
-  border: 1px solid #0d2b3e;
+  font-size: 18px;
 }
 .product-total {
   font-weight: bold;
   font-size: 24px;
 }
 
-/* ===================================
-Form
-=================================== */
-.form {
-  margin-top: 30px;
-}
-.message {
-  width: 100%;
-  background-color: transparent;
-  border: 1px solid transparent;
-  box-sizing: border-box;
-  font-weight: bold;
-  height: 0;
-  opacity: 0;
-  transition: all 0.2s ease-in-out;
-}
-.message.is-error {
-  opacity: 1;
+/* Form elements */
+.error-message {
   margin-bottom: 20px;
-  height: 67px;
-  padding: 20px;
-  border-color:rgb(252, 96, 68);
-  background-color:rgba(250, 128, 114, 0.5)
+  padding: 15px;
+  background-color:var(--color-danger);
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
 }
-.form fieldset {
-  border: none;
-  margin: 0 0 40px 0;
-  padding: 0;
-}
-
-.form .field + .field {
+.form .field + .field,
+.form .field + .action {
   margin-top: 10px;
 }
-
 .form input,
 .form button {
   -webkit-appearance: none;
@@ -97,64 +64,59 @@ Form
   outline: none;
   border-style: none;
 }
-
 .form input {
   border: none;
   font-size: 16px;
   margin: 0;
   outline: 0;
-  padding: 16px 20px;
+  padding: 15px 20px;
   width: 100%;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  color: #0d2b3e;
-  border: 1px solid #0d2b3e;
-  transition: all 0.1s ease;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
 }
 .form input:focus {
-  color: #0d2b3e;
-  border-color: #1abc9c;
+  color: var(--color-text);
+  border-color: var(--color-primary);
 }
 .form input::placeholder {
-  color: #0d2b3e6c;
+  color: #aaa;
 }
 .form button {
-  position: relative;
-  border: none;
   display: block;
-  padding: 19px 39px 18px 39px;
-  color: #fff;
-  margin: 0 auto;
+  padding: 15px;
   font-weight: bold;
-  background: #0d2b3e;
   font-size: 18px;
-  text-align: center;
-  font-style: normal;
+  background: var(--color-primary);
+  color: #fff;
   width: 100%;
-  transition: all 0.4s;
-}
-.form button:hover {
-  background: #1abc9c;
-  cursor: pointer;
+  cursor:pointer;
 }
 .form button:disabled {
   opacity: 0.5;
 }
 
-/* ===================================
-Framepay Specific styles
-=================================== */
+/* FramePay-specific styling */
 .form .rebilly-framepay {
-  padding: 16px 20px;
+  padding: 15px 20px;
   height: 55px;
-  border: 1px solid #0d2b3e;
+  border: 1px solid var(--color-border);
   border-radius: 0;
   box-shadow: none;
 }
 
 .form .rebilly-framepay.rebilly-framepay-focus {
-  color: #0d2b3e;
-  border-color: #1abc9c;
+  color: var(--color-text);
+  border-color: var(--color-primary);
   box-shadow: none;
+}
+
+
+/* Thank you page */
+.thank-you {
+  text-align: center;
+}
+
+/* Helpers */
+.hidden {
+  display: none;
 }

@@ -1,8 +1,8 @@
 Rebilly.initialize({
   // Use your own publishable key:
-  publishableKey: "pk_sandbox_1234",
+  publishableKey: "pk_sandbox_7FB1AJwXpG7qOrQukcKcBV_jBJ5622bGmTlknWH",
   icon: {
-    color: "#0d2b3e",
+    color: "#2c3e50",
   },
   style: {
     base: {
@@ -12,9 +12,9 @@ Rebilly.initialize({
   },
 });
 
-const form = document.querySelector("form");
-const message = document.querySelector(".message");
-const button = document.querySelector("button");
+const form = document.getElementById('checkout-form');
+const errorMessageBox = document.querySelector(".error-message");
+const btnSubmit = document.querySelector(".action button");
 
 Rebilly.on("ready", function () {
   Rebilly.card.mount("#mounting-point");
@@ -25,22 +25,23 @@ form.onsubmit = async function (e) {
   e.stopPropagation();
 
   try {
-    button.disabled = true;
+    btnSubmit.disabled = true;
 
     const {id: paymentToken, billingAddress} = await Rebilly.createToken(form);
+
+    const purchase = {
+      paymentToken,
+      billingAddress,
+      currency: 'USD',
+      amount: 100,      
+    }
 
     const transactionResponse = await fetch("/create-transaction", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
       },
-      body: JSON.stringify({
-        paymentToken,
-        billingAddress,
-        currency: 'USD',
-        amount: 100,
-      }),
+      body: JSON.stringify(purchase),
     });
 
     const transactionData = await transactionResponse.json();
@@ -53,10 +54,10 @@ form.onsubmit = async function (e) {
       window.location = "/thank-you.html";
     }
   } catch (error) {
-    message.classList.add("is-error");
-    message.innerText = "Something went wrong, please try again.";
     console.log(error);
+    errorMessageBox.innerText = "Something went wrong, please try again.";
+    errorMessageBox.classList.remove("hidden");
   } finally {
-    button.disabled = false;
+    btnSubmit.disabled = false;
   }
 };
