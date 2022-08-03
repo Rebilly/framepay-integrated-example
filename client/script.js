@@ -1,6 +1,6 @@
 Rebilly.initialize({
   // Use your own publishable key:
-  publishableKey: "pk_publishableKey",
+  publishableKey: "pk_sandbox_7FB1AJwXpG7qOrQukcKcBV_jBJ5622bGmTlknWH",
   icon: {
     color: "#2c3e50",
   },
@@ -20,7 +20,7 @@ Rebilly.on("ready", function () {
   Rebilly.card.mount("#mounting-point");
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   e.stopPropagation();
 
